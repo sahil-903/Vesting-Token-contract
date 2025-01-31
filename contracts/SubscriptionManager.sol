@@ -29,20 +29,34 @@ contract SubscriptionManager is Ownable{
     }
 
     function subscribe() external payable {
-        require(msg.value == subscriptionFee, "Incorrect fee");
+        require(msg.value >= subscriptionFee, "Insufficient fee");
         require(subscriptions[msg.sender] < block.timestamp, "Subscription still active");
 
         uint256 expiry = block.timestamp.add(DURATION);
         subscriptions[msg.sender] = expiry;
 
+        // transfer subscription fee to owner
+        payable(owner()).transfer(subscriptionFee);
+        // give back any extra fee
+        if(msg.value-subscriptionFee >= 0) {
+            payable(msg.sender).transfer(msg.value-subscriptionFee);
+        }
+
         emit SubscriptionPurchased(msg.sender, expiry);
     }
 
     function renewSubscription() external payable {
-        require(msg.value == subscriptionFee, "Incorrect fee");
-        require(subscriptions[msg.sender] >= block.timestamp, "Subscription expired, subscribe again");
+        require(msg.value >= subscriptionFee, "Insufficient fee");
 
         subscriptions[msg.sender] = subscriptions[msg.sender].add(DURATION);
+
+        // transfer renew subscription fee to owner
+        payable(owner()).transfer(msg.value);
+
+        // give back any extra fee
+        if(msg.value-subscriptionFee >= 0) {
+            payable(msg.sender).transfer(msg.value-subscriptionFee);
+        }
         
         emit SubscriptionRenewed(msg.sender, subscriptions[msg.sender]);
     }
