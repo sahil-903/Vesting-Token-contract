@@ -47,7 +47,7 @@ contract SubscriptionManager is Ownable{
 
     function renewSubscription() external payable {
         require(msg.value >= subscriptionFee, "Insufficient fee");
-        require(subscriptions[msg.sender] >= 0, "User never subscribed");
+        require(subscriptions[msg.sender] > 0, "User never subscribed");
 
         subscriptions[msg.sender] = subscriptions[msg.sender].add(DURATION);
 
