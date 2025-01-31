@@ -1,11 +1,11 @@
 ### Download and install dependencies
-
+```
 
 git clone https://github.com/sahil-903/subscription.git
 cd subscription-contracts
 nvm use 20.17.0
 npm i
-
+```
 
 ### Compile
 
