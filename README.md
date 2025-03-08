@@ -15,18 +15,18 @@ npx hardhat compile
 
 ### Set env variables
 Create .evn file at the root of the project and fill below values. Refer to env_sample for reference
-
+```
 DEPLOYER_KEY=
 NODE_ID=
 NETWORK= polygon | amoy
-
+```
 
 ### Prepare for Deployment
 
 Custom `gas` value can be configured for different network in `hardhat.config.js`
 
 e.g.
-
+```
 amoy: {
       url: `https://polygon-amoy.infura.io/v3/${process.env.NODE_ID}`,
       tags: ["test"],
@@ -37,7 +37,7 @@ amoy: {
       accounts: real_accounts,
     },
 
-
+```
 
 
 Visite below script to deploy contract.
