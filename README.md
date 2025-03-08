@@ -1,8 +1,8 @@
 ### Download and install dependencies
 ```
 
-git clone https://github.com/sahil-903/subscription.git
-cd subscription-contracts
+git clone https://github.com/sahil-903/Vesting-Token-contract.git
+cd TOKEN-VESTING
 nvm use 20.17.0
 npm i
 ```
@@ -42,7 +42,7 @@ amoy: {
 
 Visite below script to deploy contract.
 
-deploy/deploy_subscriptionManager.js
+deploy/deploy_vestingToken.js
 
 
 

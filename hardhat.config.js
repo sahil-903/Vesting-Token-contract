@@ -39,7 +39,7 @@ module.exports = {
       tags: ["test"],
     },
     polygon: {
-      url: `https://polygon-mainnet.infura.io/v3/${process.env.NODE_ID}`,
+      url: `https://polygon-mainnet.g.alchemy.com/v2/${process.env.NODE_ID}`,
       tags: [],
       gas: 6_000_000,
       gasPrice: 200_000_000_000,
@@ -49,7 +49,7 @@ module.exports = {
       accounts: real_accounts,
     },
     amoy: {
-      url: `https://polygon-amoy.infura.io/v3/${process.env.NODE_ID}`,
+      url: `https://polygon-amoy.g.alchemy.com/v2/${process.env.NODE_ID}`,
       tags: ["test"],
       gas: 6_000_000,
       gasPrice: 35_000_000_000,
